@@ -25,5 +25,5 @@
 (defroute hello  ("/" :method :get) (name)
   (page:hello name))
 
-(defroute username-id  ("/username/:name" :method :get) ()
-  (handle:username name))
+(defroute username-id  ("/username-id/:name" :method :get) ()
+  (handle:username-id name))
