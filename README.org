@@ -1,6 +1,6 @@
 #+TITLE: websxp
 
-* Full stack web app on Common Lisp
+* Full stack web app with Common Lisp
 
 Outside of the web server (Hunchentoot), other functionalities are
 brought by DSLs / transpilers:
@@ -11,7 +11,7 @@ brought by DSLs / transpilers:
 - SQL: SxQL
 - JSON: Jonathan
 
-** Future Modules
+** Planning for modules
 - style.lisp
 - script.lisp
 - pages.lisp
