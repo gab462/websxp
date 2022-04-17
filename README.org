@@ -1,0 +1,19 @@
+#+TITLE: websxp
+
+* Full stack web app on Common Lisp
+
+Outside of the web server (Hunchentoot), other functionalities are
+brought by DSLs / transpilers:
+
+- HTML: Spinneret
+- CSS: LASS
+- Javascript: Parenscript
+- SQL: SxQL
+- JSON: Jonathan
+
+** Future Modules
+- style.lisp
+- script.lisp
+- pages.lisp
+- handlers.lisp
+- db.lisp
