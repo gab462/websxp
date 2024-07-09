@@ -1,18 +1,26 @@
 (in-package :cl-user)
 
-(asdf:defsystem websxp
+(defpackage websxp-asd
+  (:use :cl :asdf))
+
+(in-package :websxp-asd)
+
+(defsystem websxp
     :version "0.0.0"
     :license "MIT"
+    :pathname "src"
     :serial T
-    :components ((:file "db")
-                 (:file "handlers")
-                 (:file "pages")
-                 (:file "core"))
-    :depends-on (:hunchentoot
+    :depends-on (:cl-punch
+                 :arrow-macros
+                 :hunchentoot
                  :easy-routes
                  :spinneret
-                 :lass
-                 :parenscript
-                 :sqlite
-                 :sxql
-                 :jonathan))
+                 :mito
+                 :jonathan)
+    :components ((:file "db")
+                 (:file "pages")
+                 (:file "handlers")
+                 (:file "core"))
+    :build-operation :program-op
+    :build-pathname "websxp"
+    :entry-point "websxp.core:main")
