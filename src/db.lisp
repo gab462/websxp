@@ -2,6 +2,7 @@
 
 (defpackage websxp.db
   (:use :cl)
+  (:import-from :arrow-macros :->>)
   (:export :create-contact
            :delete-contact
            :get-all-contacts))
@@ -28,11 +29,13 @@
     :status ,(contact-status obj)))
 
 (defun create-contact (name email status)
-  (as-plist (mito:create-dao 'contact :name name :email email :status status)))
+  (->> (mito:create-dao 'contact :name name :email email :status status)
+       as-plist))
 
 (defun delete-contact (id)
   (mito:delete-by-values 'contact :id id)
   (get-all-contacts))
 
 (defun get-all-contacts ()
-  (mapcar 'as-plist (mito:select-dao 'contact)))
+  (->> (mito:select-dao 'contact)
+       (mapcar 'as-plist)))

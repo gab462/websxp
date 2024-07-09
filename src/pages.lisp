@@ -2,6 +2,7 @@
 
 (defpackage websxp.pages
   (:use :cl)
+  (:import-from :arrow-macros :->)
   (:export :contacts-table
            :render-page
            :render-element))
@@ -23,13 +24,14 @@
      ,body)))
 
 (defun render-page (title page)
-  (spinneret:with-html-string
-      (spinneret:interpret-html-tree
-       (make-page title page))))
+  (-> (make-page title page)
+      spinneret:interpret-html-tree
+      spinneret:with-html-string))
 
 (defun render-element (element)
-  (spinneret:with-html-string
-      (spinneret:interpret-html-tree element)))
+  (-> element
+      spinneret:interpret-html-tree
+      spinneret:with-html-string))
 
 (defun contacts-table (contacts)
   `(:main
